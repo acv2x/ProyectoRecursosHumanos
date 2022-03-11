@@ -1,0 +1,68 @@
+﻿@model Capa_Entidad.Vacaciones
+
+@{
+    ViewBag.Title = "DetalleVAC";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Vacaciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_VAC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_VAC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_EMP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_EMP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hasta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hasta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorrespondienteA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorrespondienteA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a class="btn btn-success btn-lg" title="Editar" href="@Url.Action("Edit", new { id = Model.ID_VAC })"><i class="glyphicon glyphicon-pencil"></i></a> |
+    <a class="btn btn-primary btn-lg" title="Ir a la lista" href="@Url.Action("Details")"><i class="glyphicon glyphicon-eye-open"></i></a> |
+    <a class="btn btn-danger btn-lg" title="Eliminar" href="@Url.Action("Delete", new { id = Model.ID_VAC})"><i class="glyphicon glyphicon-erase"></i></a>
+</p>

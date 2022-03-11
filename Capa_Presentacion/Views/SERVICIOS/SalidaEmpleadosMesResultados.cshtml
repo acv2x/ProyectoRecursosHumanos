@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Capa_Entidad.Proc_SalidasMES_Result>
+
+@{
+    ViewBag.Title = "SalidaEmpleadosMesResultados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Salida de Empleados por Mes</h2>
+
+<p>
+    <a class="btn btn-success btn-lg" title="Nuevo" href="@Url.Action("Create", "SALIDAS")"><i class="glyphicon glyphicon-plus"></i></a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_SAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_EMP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoSalida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Motivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaSalida)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_SAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_EMP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoSalida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Motivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaSalida)
+        </td>
+        <td>
+            <a class="btn btn-success btn-xs" title="Editar" href="@Url.Action("Edit", "SALIDAS", new { id = item.ID_SAL })"><i class="glyphicon glyphicon-pencil"></i></a>  |
+            <a class="btn btn-primary btn-xs" title="Detalles" href="@Url.Action( "DetalleSALIDA", "SALIDAS", new { id = item.ID_SAL })"><i class="glyphicon glyphicon-eye-open"></i></a> |
+            <a class="btn btn-danger btn-xs" title="Eliminar" href="@Url.Action( "Delete",  "SALIDAS", new { id = item.ID_SAL })"><i class="glyphicon glyphicon-erase"></i></a>
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "EmpleadosActivo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>BUSQUEDA DE EMPLEADOS ACTIVOS</h2>
+<form action="/SERVICIOS/ResultadosEmpAc" method="post">
+    <input type="text" name="nombre" placeholder="NOMBRE" />
+    <input type="number" name="departamento" placeholder="ID_DEPARTAMENTO"/>
+    <br /><br />
+    <input type="submit" value="BUSCAR" class="btn btn-primary" />
+</form>
+

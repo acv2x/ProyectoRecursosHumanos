@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "NominaBuscar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>NominaBuscar</h2>
+<form action="/SERVICIOS/NominaBuscarResultado" method="post">
+    <input type="text" name="año" placeholder="Año" />
+    <input type="text" name="mes" placeholder="Mes" />
+    <br /><br />
+    <input type="submit" value="Buscar" class="btn btn-primary" />
+</form>

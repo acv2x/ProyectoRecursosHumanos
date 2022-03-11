@@ -1,0 +1,41 @@
+﻿@model Capa_Entidad.Cargos
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h3>ESTÁS SEGURO DE ELIMINAR ESTE ELEMENTO?</h3>
+<div>
+    <h4>Cargos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_CAR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_CAR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cargo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            <a class="btn btn-primary btn-lg" title="IR LA LISTA" href="@Url.Action("Details")"><i class="glyphicon glyphicon-eye-open"></i></a>
+        </div>
+    }
+</div>

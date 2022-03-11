@@ -1,0 +1,57 @@
+﻿@model Capa_Entidad.Nominas
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h3>ESTÁS SEGURO DE ELIMINAR ESTE ELEMENTO?</h3>
+<div>
+    <h4>Nominas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_NOM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_NOM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Año)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Año)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoTotal)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            <a class="btn btn-primary btn-lg" title="IR LA LISTA" href="@Url.Action("Details")"><i class="glyphicon glyphicon-eye-open"></i></a>
+        </div>
+    }
+</div>

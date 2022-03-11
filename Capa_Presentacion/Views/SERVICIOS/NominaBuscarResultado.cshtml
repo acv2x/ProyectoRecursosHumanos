@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Capa_Entidad.BuscaNomina_Result>
+
+@{
+    ViewBag.Title = "NominaBuscarResultado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>NominaBuscarResultado</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_NOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Año)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MontoTotal)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_NOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Año)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MontoTotal)
+        </td>
+        <td>
+            <a class="btn btn-success btn-xs" title="Editar" href="@Url.Action("Edit", "NOMINAS", new { id = item.ID_NOM })"><i class="glyphicon glyphicon-pencil"></i></a>  |
+            <a class="btn btn-primary btn-xs" title="Detalles" href="@Url.Action( "DetalleNomina", "NOMINAS", new { id = item.ID_NOM })"><i class="glyphicon glyphicon-eye-open"></i></a> |
+            <a class="btn btn-danger btn-xs" title="Eliminar" href="@Url.Action( "Delete", "NOMINAS", new { id = item.ID_NOM })"><i class="glyphicon glyphicon-erase"></i></a>
+        </td>
+    </tr>
+}
+
+</table>

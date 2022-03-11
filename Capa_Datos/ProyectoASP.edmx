@@ -1,0 +1,551 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProyectoASPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cargos">
+          <Key>
+            <PropertyRef Name="ID_CAR" />
+          </Key>
+          <Property Name="ID_CAR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cargo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="ID_DEP" />
+          </Key>
+          <Property Name="ID_DEP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="ID_EMP" />
+          </Key>
+          <Property Name="ID_EMP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoEmpleado" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_DEP" Type="int" />
+          <Property Name="ID_CAR" Type="int" />
+          <Property Name="FechaIngreso" Type="nvarchar" MaxLength="50" />
+          <Property Name="Salario" Type="nvarchar" MaxLength="50" />
+          <Property Name="Estatus" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Licencias">
+          <Key>
+            <PropertyRef Name="ID_LIC" />
+          </Key>
+          <Property Name="ID_LIC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_EMP" Type="int" />
+          <Property Name="Desde" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hasta" Type="nvarchar" MaxLength="50" />
+          <Property Name="Motivo" Type="nvarchar" MaxLength="500" />
+          <Property Name="Comentario" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Nominas">
+          <Key>
+            <PropertyRef Name="ID_NOM" />
+          </Key>
+          <Property Name="ID_NOM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Año" Type="int" />
+          <Property Name="Mes" Type="nvarchar" MaxLength="15" />
+          <Property Name="MontoTotal" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="ID_PER" />
+          </Key>
+          <Property Name="ID_PER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_EMP" Type="int" />
+          <Property Name="Desde" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hasta" Type="nvarchar" MaxLength="50" />
+          <Property Name="Comentario" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Salidas">
+          <Key>
+            <PropertyRef Name="ID_SAL" />
+          </Key>
+          <Property Name="ID_SAL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_EMP" Type="int" />
+          <Property Name="TipoSalida" Type="nvarchar" MaxLength="50" />
+          <Property Name="Motivo" Type="nvarchar" MaxLength="500" />
+          <Property Name="FechaSalida" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Vacaciones">
+          <Key>
+            <PropertyRef Name="ID_VAC" />
+          </Key>
+          <Property Name="ID_VAC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_EMP" Type="int" />
+          <Property Name="Desde" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hasta" Type="nvarchar" MaxLength="50" />
+          <Property Name="CorrespondienteA" Type="int" />
+          <Property Name="Comentario" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <Function Name="BuscaNomina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="año" Type="nvarchar" Mode="In" />
+          <Parameter Name="mes" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Empleados_Activos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="Departamento" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Empleados_Inactivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PROC_Cargos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PROC_Departamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PROC_EMPLEADOporMES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Mes" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Proc_Permisos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDEMP" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Proc_PermisosEMP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDEMP" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Proc_SalidasMES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Mes" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ProyectoASPModelStoreContainer">
+          <EntitySet Name="Cargos" EntityType="Self.Cargos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Licencias" EntityType="Self.Licencias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nominas" EntityType="Self.Nominas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Salidas" EntityType="Self.Salidas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vacaciones" EntityType="Self.Vacaciones" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoASPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ProyectoASPEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="Empleadaos_Inactivos" ReturnType="Collection(ProyectoASPModel.Empleadaos_Inactivos_Result)" />
+          <FunctionImport Name="Empleados_Activos" ReturnType="Collection(ProyectoASPModel.Empleados_Activos_Result)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Departamento" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_Cargos" ReturnType="Collection(ProyectoASPModel.PROC_Cargos_Result)" />
+          <FunctionImport Name="PROC_Departamento" ReturnType="Collection(ProyectoASPModel.PROC_Departamento_Result)" />
+          <FunctionImport Name="PROC_EMPLEADOporMES" ReturnType="Collection(ProyectoASPModel.PROC_EMPLEADOporMES_Result)">
+          <Parameter Name="Mes" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_Permisos" ReturnType="Collection(ProyectoASPModel.Proc_Permisos_Result)">
+          <Parameter Name="IDEMP" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Proc_SalidasMES" ReturnType="Collection(ProyectoASPModel.Proc_SalidasMES_Result)">
+          <Parameter Name="Mes" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Empleados_Inactivos" ReturnType="Collection(ProyectoASPModel.Empleados_Inactivos_Result)" />
+          <FunctionImport Name="Proc_PermisosEMP" ReturnType="Collection(ProyectoASPModel.Proc_PermisosEMP_Result)">
+          <Parameter Name="IDEMP" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Cargos" EntityType="ProyectoASPModel.Cargos" />
+          <EntitySet Name="Departamentos" EntityType="ProyectoASPModel.Departamentos" />
+          <EntitySet Name="Empleados" EntityType="ProyectoASPModel.Empleados" />
+          <EntitySet Name="Licencias" EntityType="ProyectoASPModel.Licencias" />
+          <EntitySet Name="Nominas" EntityType="ProyectoASPModel.Nominas" />
+          <EntitySet Name="Permisos" EntityType="ProyectoASPModel.Permisos" />
+          <EntitySet Name="Salidas" EntityType="ProyectoASPModel.Salidas" />
+          <EntitySet Name="Vacaciones" EntityType="ProyectoASPModel.Vacaciones" />
+          <FunctionImport Name="BuscaNomina" ReturnType="Collection(ProyectoASPModel.BuscaNomina_Result)">
+            <Parameter Name="año" Mode="In" Type="String" />
+            <Parameter Name="mes" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Empleadaos_Inactivos_Result">
+          <Property Type="Int32" Name="ID_EMP" Nullable="false" />
+          <Property Type="String" Name="CodigoEmpleado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID_DEP" Nullable="true" />
+          <Property Type="Int32" Name="ID_CAR" Nullable="true" />
+          <Property Type="String" Name="FechaIngreso" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Salario" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Empleados_Activos_Result">
+          <Property Type="Int32" Name="ID_EMP" Nullable="false" />
+          <Property Type="String" Name="CodigoEmpleado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID_DEP" Nullable="true" />
+          <Property Type="Int32" Name="ID_CAR" Nullable="true" />
+          <Property Type="String" Name="FechaIngreso" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Salario" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PROC_Cargos_Result">
+          <Property Type="Int32" Name="ID_CAR" Nullable="false" />
+          <Property Type="String" Name="Cargo" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PROC_Departamento_Result">
+          <Property Type="Int32" Name="ID_DEP" Nullable="false" />
+          <Property Type="String" Name="Codigo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Departamento" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="PROC_EMPLEADOporMES_Result">
+          <Property Type="Int32" Name="ID_EMP" Nullable="false" />
+          <Property Type="String" Name="CodigoEmpleado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID_DEP" Nullable="true" />
+          <Property Type="Int32" Name="ID_CAR" Nullable="true" />
+          <Property Type="String" Name="FechaIngreso" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Salario" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Proc_Permisos_Result">
+          <Property Type="Int32" Name="ID_PER" Nullable="false" />
+          <Property Type="Int32" Name="ID_EMP" Nullable="true" />
+          <Property Type="String" Name="Desde" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Hasta" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Comentario" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="Proc_SalidasMES_Result">
+          <Property Type="Int32" Name="ID_SAL" Nullable="false" />
+          <Property Type="Int32" Name="ID_EMP" Nullable="true" />
+          <Property Type="String" Name="TipoSalida" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Motivo" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="FechaSalida" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Empleados_Inactivos_Result">
+          <Property Type="Int32" Name="ID_EMP" Nullable="false" />
+          <Property Type="String" Name="CodigoEmpleado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID_DEP" Nullable="true" />
+          <Property Type="Int32" Name="ID_CAR" Nullable="true" />
+          <Property Type="String" Name="FechaIngreso" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Salario" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Estatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Proc_PermisosEMP_Result">
+          <Property Type="Int32" Name="ID_PER" Nullable="false" />
+          <Property Type="Int32" Name="ID_EMP" Nullable="true" />
+          <Property Type="String" Name="Desde" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Hasta" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Comentario" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <EntityType Name="Cargos">
+          <Key>
+            <PropertyRef Name="ID_CAR" />
+          </Key>
+          <Property Name="ID_CAR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="ID_DEP" />
+          </Key>
+          <Property Name="ID_DEP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="ID_EMP" />
+          </Key>
+          <Property Name="ID_EMP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoEmpleado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_DEP" Type="Int32" />
+          <Property Name="ID_CAR" Type="Int32" />
+          <Property Name="FechaIngreso" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Salario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Licencias">
+          <Key>
+            <PropertyRef Name="ID_LIC" />
+          </Key>
+          <Property Name="ID_LIC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_EMP" Type="Int32" />
+          <Property Name="Desde" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hasta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Motivo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Nominas">
+          <Key>
+            <PropertyRef Name="ID_NOM" />
+          </Key>
+          <Property Name="ID_NOM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Año" Type="Int32" />
+          <Property Name="Mes" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="MontoTotal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="ID_PER" />
+          </Key>
+          <Property Name="ID_PER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_EMP" Type="Int32" />
+          <Property Name="Desde" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hasta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Salidas">
+          <Key>
+            <PropertyRef Name="ID_SAL" />
+          </Key>
+          <Property Name="ID_SAL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_EMP" Type="Int32" />
+          <Property Name="TipoSalida" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Motivo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FechaSalida" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Vacaciones">
+          <Key>
+            <PropertyRef Name="ID_VAC" />
+          </Key>
+          <Property Name="ID_VAC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_EMP" Type="Int32" />
+          <Property Name="Desde" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hasta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CorrespondienteA" Type="Int32" />
+          <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="BuscaNomina_Result">
+          <Property Type="Int32" Name="ID_NOM" Nullable="false" />
+          <Property Type="Int32" Name="Año" Nullable="true" />
+          <Property Type="String" Name="Mes" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="MontoTotal" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoASPModelStoreContainer" CdmEntityContainer="ProyectoASPEntities">
+          <FunctionImportMapping FunctionImportName="Empleados_Activos" FunctionName="ProyectoASPModel.Store.Empleados_Activos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoASPModel.Empleados_Activos_Result">
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+                <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="ID_DEP" ColumnName="ID_DEP" />
+                <ScalarProperty Name="ID_CAR" ColumnName="ID_CAR" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PROC_Cargos" FunctionName="ProyectoASPModel.Store.PROC_Cargos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoASPModel.PROC_Cargos_Result">
+                <ScalarProperty Name="ID_CAR" ColumnName="ID_CAR" />
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PROC_Departamento" FunctionName="ProyectoASPModel.Store.PROC_Departamento">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoASPModel.PROC_Departamento_Result">
+                <ScalarProperty Name="ID_DEP" ColumnName="ID_DEP" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PROC_EMPLEADOporMES" FunctionName="ProyectoASPModel.Store.PROC_EMPLEADOporMES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoASPModel.PROC_EMPLEADOporMES_Result">
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+                <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="ID_DEP" ColumnName="ID_DEP" />
+                <ScalarProperty Name="ID_CAR" ColumnName="ID_CAR" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_Permisos" FunctionName="ProyectoASPModel.Store.Proc_Permisos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoASPModel.Proc_Permisos_Result">
+                <ScalarProperty Name="ID_PER" ColumnName="ID_PER" />
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_SalidasMES" FunctionName="ProyectoASPModel.Store.Proc_SalidasMES">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoASPModel.Proc_SalidasMES_Result">
+                <ScalarProperty Name="ID_SAL" ColumnName="ID_SAL" />
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+                <ScalarProperty Name="TipoSalida" ColumnName="TipoSalida" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Empleados_Inactivos" FunctionName="ProyectoASPModel.Store.Empleados_Inactivos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoASPModel.Empleados_Inactivos_Result">
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+                <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="ID_DEP" ColumnName="ID_DEP" />
+                <ScalarProperty Name="ID_CAR" ColumnName="ID_CAR" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Proc_PermisosEMP" FunctionName="ProyectoASPModel.Store.Proc_PermisosEMP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoASPModel.Proc_PermisosEMP_Result">
+                <ScalarProperty Name="ID_PER" ColumnName="ID_PER" />
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Cargos">
+            <EntityTypeMapping TypeName="ProyectoASPModel.Cargos">
+              <MappingFragment StoreEntitySet="Cargos">
+                <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+                <ScalarProperty Name="ID_CAR" ColumnName="ID_CAR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamentos">
+            <EntityTypeMapping TypeName="ProyectoASPModel.Departamentos">
+              <MappingFragment StoreEntitySet="Departamentos">
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="ID_DEP" ColumnName="ID_DEP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="ProyectoASPModel.Empleados">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="ID_CAR" ColumnName="ID_CAR" />
+                <ScalarProperty Name="ID_DEP" ColumnName="ID_DEP" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Licencias">
+            <EntityTypeMapping TypeName="ProyectoASPModel.Licencias">
+              <MappingFragment StoreEntitySet="Licencias">
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+                <ScalarProperty Name="ID_LIC" ColumnName="ID_LIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nominas">
+            <EntityTypeMapping TypeName="ProyectoASPModel.Nominas">
+              <MappingFragment StoreEntitySet="Nominas">
+                <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="ID_NOM" ColumnName="ID_NOM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permisos">
+            <EntityTypeMapping TypeName="ProyectoASPModel.Permisos">
+              <MappingFragment StoreEntitySet="Permisos">
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+                <ScalarProperty Name="ID_PER" ColumnName="ID_PER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salidas">
+            <EntityTypeMapping TypeName="ProyectoASPModel.Salidas">
+              <MappingFragment StoreEntitySet="Salidas">
+                <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="TipoSalida" ColumnName="TipoSalida" />
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+                <ScalarProperty Name="ID_SAL" ColumnName="ID_SAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vacaciones">
+            <EntityTypeMapping TypeName="ProyectoASPModel.Vacaciones">
+              <MappingFragment StoreEntitySet="Vacaciones">
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="CorrespondienteA" ColumnName="CorrespondienteA" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+                <ScalarProperty Name="ID_VAC" ColumnName="ID_VAC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="BuscaNomina" FunctionName="ProyectoASPModel.Store.BuscaNomina">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProyectoASPModel.BuscaNomina_Result">
+                <ScalarProperty Name="ID_NOM" ColumnName="ID_NOM" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

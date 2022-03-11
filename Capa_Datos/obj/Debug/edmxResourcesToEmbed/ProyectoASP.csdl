@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoASPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ProyectoASPEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="Empleadaos_Inactivos" ReturnType="Collection(ProyectoASPModel.Empleadaos_Inactivos_Result)" />
+    <FunctionImport Name="Empleados_Activos" ReturnType="Collection(ProyectoASPModel.Empleados_Activos_Result)">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Departamento" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_Cargos" ReturnType="Collection(ProyectoASPModel.PROC_Cargos_Result)" />
+    <FunctionImport Name="PROC_Departamento" ReturnType="Collection(ProyectoASPModel.PROC_Departamento_Result)" />
+    <FunctionImport Name="PROC_EMPLEADOporMES" ReturnType="Collection(ProyectoASPModel.PROC_EMPLEADOporMES_Result)">
+      <Parameter Name="Mes" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Proc_Permisos" ReturnType="Collection(ProyectoASPModel.Proc_Permisos_Result)">
+      <Parameter Name="IDEMP" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Proc_SalidasMES" ReturnType="Collection(ProyectoASPModel.Proc_SalidasMES_Result)">
+      <Parameter Name="Mes" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Empleados_Inactivos" ReturnType="Collection(ProyectoASPModel.Empleados_Inactivos_Result)" />
+    <FunctionImport Name="Proc_PermisosEMP" ReturnType="Collection(ProyectoASPModel.Proc_PermisosEMP_Result)">
+      <Parameter Name="IDEMP" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Cargos" EntityType="ProyectoASPModel.Cargos" />
+    <EntitySet Name="Departamentos" EntityType="ProyectoASPModel.Departamentos" />
+    <EntitySet Name="Empleados" EntityType="ProyectoASPModel.Empleados" />
+    <EntitySet Name="Licencias" EntityType="ProyectoASPModel.Licencias" />
+    <EntitySet Name="Nominas" EntityType="ProyectoASPModel.Nominas" />
+    <EntitySet Name="Permisos" EntityType="ProyectoASPModel.Permisos" />
+    <EntitySet Name="Salidas" EntityType="ProyectoASPModel.Salidas" />
+    <EntitySet Name="Vacaciones" EntityType="ProyectoASPModel.Vacaciones" />
+    <FunctionImport Name="BuscaNomina" ReturnType="Collection(ProyectoASPModel.BuscaNomina_Result)">
+      <Parameter Name="año" Mode="In" Type="String" />
+      <Parameter Name="mes" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="Empleadaos_Inactivos_Result">
+    <Property Type="Int32" Name="ID_EMP" Nullable="false" />
+    <Property Type="String" Name="CodigoEmpleado" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="ID_DEP" Nullable="true" />
+    <Property Type="Int32" Name="ID_CAR" Nullable="true" />
+    <Property Type="String" Name="FechaIngreso" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Salario" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Estatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Empleados_Activos_Result">
+    <Property Type="Int32" Name="ID_EMP" Nullable="false" />
+    <Property Type="String" Name="CodigoEmpleado" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="ID_DEP" Nullable="true" />
+    <Property Type="Int32" Name="ID_CAR" Nullable="true" />
+    <Property Type="String" Name="FechaIngreso" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Salario" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Estatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="PROC_Cargos_Result">
+    <Property Type="Int32" Name="ID_CAR" Nullable="false" />
+    <Property Type="String" Name="Cargo" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="PROC_Departamento_Result">
+    <Property Type="Int32" Name="ID_DEP" Nullable="false" />
+    <Property Type="String" Name="Codigo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Departamento" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="PROC_EMPLEADOporMES_Result">
+    <Property Type="Int32" Name="ID_EMP" Nullable="false" />
+    <Property Type="String" Name="CodigoEmpleado" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="ID_DEP" Nullable="true" />
+    <Property Type="Int32" Name="ID_CAR" Nullable="true" />
+    <Property Type="String" Name="FechaIngreso" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Salario" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Estatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Proc_Permisos_Result">
+    <Property Type="Int32" Name="ID_PER" Nullable="false" />
+    <Property Type="Int32" Name="ID_EMP" Nullable="true" />
+    <Property Type="String" Name="Desde" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Hasta" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Comentario" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="Proc_SalidasMES_Result">
+    <Property Type="Int32" Name="ID_SAL" Nullable="false" />
+    <Property Type="Int32" Name="ID_EMP" Nullable="true" />
+    <Property Type="String" Name="TipoSalida" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Motivo" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="FechaSalida" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Empleados_Inactivos_Result">
+    <Property Type="Int32" Name="ID_EMP" Nullable="false" />
+    <Property Type="String" Name="CodigoEmpleado" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="ID_DEP" Nullable="true" />
+    <Property Type="Int32" Name="ID_CAR" Nullable="true" />
+    <Property Type="String" Name="FechaIngreso" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Salario" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Estatus" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Proc_PermisosEMP_Result">
+    <Property Type="Int32" Name="ID_PER" Nullable="false" />
+    <Property Type="Int32" Name="ID_EMP" Nullable="true" />
+    <Property Type="String" Name="Desde" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Hasta" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Comentario" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <EntityType Name="Cargos">
+    <Key>
+      <PropertyRef Name="ID_CAR" />
+    </Key>
+    <Property Name="ID_CAR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Departamentos">
+    <Key>
+      <PropertyRef Name="ID_DEP" />
+    </Key>
+    <Property Name="ID_DEP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Empleados">
+    <Key>
+      <PropertyRef Name="ID_EMP" />
+    </Key>
+    <Property Name="ID_EMP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodigoEmpleado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID_DEP" Type="Int32" />
+    <Property Name="ID_CAR" Type="Int32" />
+    <Property Name="FechaIngreso" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Salario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Licencias">
+    <Key>
+      <PropertyRef Name="ID_LIC" />
+    </Key>
+    <Property Name="ID_LIC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_EMP" Type="Int32" />
+    <Property Name="Desde" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Motivo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Nominas">
+    <Key>
+      <PropertyRef Name="ID_NOM" />
+    </Key>
+    <Property Name="ID_NOM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Año" Type="Int32" />
+    <Property Name="Mes" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="MontoTotal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Permisos">
+    <Key>
+      <PropertyRef Name="ID_PER" />
+    </Key>
+    <Property Name="ID_PER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_EMP" Type="Int32" />
+    <Property Name="Desde" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Salidas">
+    <Key>
+      <PropertyRef Name="ID_SAL" />
+    </Key>
+    <Property Name="ID_SAL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_EMP" Type="Int32" />
+    <Property Name="TipoSalida" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Motivo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FechaSalida" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Vacaciones">
+    <Key>
+      <PropertyRef Name="ID_VAC" />
+    </Key>
+    <Property Name="ID_VAC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_EMP" Type="Int32" />
+    <Property Name="Desde" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hasta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CorrespondienteA" Type="Int32" />
+    <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="BuscaNomina_Result">
+    <Property Type="Int32" Name="ID_NOM" Nullable="false" />
+    <Property Type="Int32" Name="Año" Nullable="true" />
+    <Property Type="String" Name="Mes" Nullable="true" MaxLength="15" />
+    <Property Type="String" Name="MontoTotal" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

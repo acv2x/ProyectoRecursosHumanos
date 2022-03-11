@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProyectoASPModelStoreContainer" CdmEntityContainer="ProyectoASPEntities">
+    <FunctionImportMapping FunctionImportName="Empleados_Activos" FunctionName="ProyectoASPModel.Store.Empleados_Activos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoASPModel.Empleados_Activos_Result">
+          <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="ID_DEP" ColumnName="ID_DEP" />
+          <ScalarProperty Name="ID_CAR" ColumnName="ID_CAR" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_Cargos" FunctionName="ProyectoASPModel.Store.PROC_Cargos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoASPModel.PROC_Cargos_Result">
+          <ScalarProperty Name="ID_CAR" ColumnName="ID_CAR" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_Departamento" FunctionName="ProyectoASPModel.Store.PROC_Departamento">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoASPModel.PROC_Departamento_Result">
+          <ScalarProperty Name="ID_DEP" ColumnName="ID_DEP" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_EMPLEADOporMES" FunctionName="ProyectoASPModel.Store.PROC_EMPLEADOporMES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoASPModel.PROC_EMPLEADOporMES_Result">
+          <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="ID_DEP" ColumnName="ID_DEP" />
+          <ScalarProperty Name="ID_CAR" ColumnName="ID_CAR" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_Permisos" FunctionName="ProyectoASPModel.Store.Proc_Permisos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoASPModel.Proc_Permisos_Result">
+          <ScalarProperty Name="ID_PER" ColumnName="ID_PER" />
+          <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+          <ScalarProperty Name="Desde" ColumnName="Desde" />
+          <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_SalidasMES" FunctionName="ProyectoASPModel.Store.Proc_SalidasMES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoASPModel.Proc_SalidasMES_Result">
+          <ScalarProperty Name="ID_SAL" ColumnName="ID_SAL" />
+          <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+          <ScalarProperty Name="TipoSalida" ColumnName="TipoSalida" />
+          <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+          <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Empleados_Inactivos" FunctionName="ProyectoASPModel.Store.Empleados_Inactivos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoASPModel.Empleados_Inactivos_Result">
+          <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="ID_DEP" ColumnName="ID_DEP" />
+          <ScalarProperty Name="ID_CAR" ColumnName="ID_CAR" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Proc_PermisosEMP" FunctionName="ProyectoASPModel.Store.Proc_PermisosEMP">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoASPModel.Proc_PermisosEMP_Result">
+          <ScalarProperty Name="ID_PER" ColumnName="ID_PER" />
+          <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+          <ScalarProperty Name="Desde" ColumnName="Desde" />
+          <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Cargos">
+      <EntityTypeMapping TypeName="ProyectoASPModel.Cargos">
+        <MappingFragment StoreEntitySet="Cargos">
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="ID_CAR" ColumnName="ID_CAR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departamentos">
+      <EntityTypeMapping TypeName="ProyectoASPModel.Departamentos">
+        <MappingFragment StoreEntitySet="Departamentos">
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="ID_DEP" ColumnName="ID_DEP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleados">
+      <EntityTypeMapping TypeName="ProyectoASPModel.Empleados">
+        <MappingFragment StoreEntitySet="Empleados">
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+          <ScalarProperty Name="ID_CAR" ColumnName="ID_CAR" />
+          <ScalarProperty Name="ID_DEP" ColumnName="ID_DEP" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="CodigoEmpleado" ColumnName="CodigoEmpleado" />
+          <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Licencias">
+      <EntityTypeMapping TypeName="ProyectoASPModel.Licencias">
+        <MappingFragment StoreEntitySet="Licencias">
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+          <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+          <ScalarProperty Name="Desde" ColumnName="Desde" />
+          <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+          <ScalarProperty Name="ID_LIC" ColumnName="ID_LIC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nominas">
+      <EntityTypeMapping TypeName="ProyectoASPModel.Nominas">
+        <MappingFragment StoreEntitySet="Nominas">
+          <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="Año" ColumnName="Año" />
+          <ScalarProperty Name="ID_NOM" ColumnName="ID_NOM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permisos">
+      <EntityTypeMapping TypeName="ProyectoASPModel.Permisos">
+        <MappingFragment StoreEntitySet="Permisos">
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+          <ScalarProperty Name="Desde" ColumnName="Desde" />
+          <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+          <ScalarProperty Name="ID_PER" ColumnName="ID_PER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salidas">
+      <EntityTypeMapping TypeName="ProyectoASPModel.Salidas">
+        <MappingFragment StoreEntitySet="Salidas">
+          <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+          <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+          <ScalarProperty Name="TipoSalida" ColumnName="TipoSalida" />
+          <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+          <ScalarProperty Name="ID_SAL" ColumnName="ID_SAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vacaciones">
+      <EntityTypeMapping TypeName="ProyectoASPModel.Vacaciones">
+        <MappingFragment StoreEntitySet="Vacaciones">
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="CorrespondienteA" ColumnName="CorrespondienteA" />
+          <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+          <ScalarProperty Name="Desde" ColumnName="Desde" />
+          <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+          <ScalarProperty Name="ID_VAC" ColumnName="ID_VAC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="BuscaNomina" FunctionName="ProyectoASPModel.Store.BuscaNomina">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoASPModel.BuscaNomina_Result">
+          <ScalarProperty Name="ID_NOM" ColumnName="ID_NOM" />
+          <ScalarProperty Name="Año" ColumnName="Año" />
+          <ScalarProperty Name="Mes" ColumnName="Mes" />
+          <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

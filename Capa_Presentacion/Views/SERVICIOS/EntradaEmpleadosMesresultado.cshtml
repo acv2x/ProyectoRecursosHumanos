@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Capa_Entidad.PROC_EMPLEADOporMES_Result>
+
+@{
+    ViewBag.Title = "EntradaEmpleadosMesresultado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Entrada de Empleados por Mes</h2>
+
+<p>
+    <a class="btn btn-success btn-lg" title="Nuevo" href="@Url.Action("Create", "EMPLEADOS")"><i class="glyphicon glyphicon-plus"></i></a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_EMP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoEmpleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_DEP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_CAR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaIngreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_EMP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoEmpleado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_DEP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_CAR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estatus)
+        </td>
+        <td>
+            <a class="btn btn-success btn-xs" title="Editar" href="@Url.Action("Edit", "EMPLEADOS", new { id = item.ID_EMP })"><i class="glyphicon glyphicon-pencil"></i></a>  |
+            <a class="btn btn-primary btn-xs" title="Detalles" href="@Url.Action( "DetalleEMP", "EMPLEADOS", new { id = item.ID_EMP })"><i class="glyphicon glyphicon-eye-open"></i></a> |
+            <a class="btn btn-danger btn-xs" title="Eliminar" href="@Url.Action( "Delete",  "EMPLEADOS", new { id = item.ID_EMP })"><i class="glyphicon glyphicon-erase"></i></a>
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Capa_Entidad.Departamentos>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista</h2>
+
+<p>
+    <a class="btn btn-success btn-lg" title="Nuevo" href="@Url.Action("Create")"><i class="glyphicon glyphicon-plus"></i></a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_DEP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departamento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_DEP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Departamento)
+        </td>
+        <td>
+            <a class="btn btn-success btn-xs" title="Editar" href="@Url.Action("Edit", new { id = item.ID_DEP })"><i class="glyphicon glyphicon-pencil"></i></a>  |
+            <a class="btn btn-primary btn-xs" title="Detalles" href="@Url.Action( "DetalleDPTO", new { id = item.ID_DEP })"><i class="glyphicon glyphicon-eye-open"></i></a> |
+            <a class="btn btn-danger btn-xs" title="Eliminar" href="@Url.Action( "Delete", new { id = item.ID_DEP })"><i class="glyphicon glyphicon-erase"></i></a>
+        </td>
+    </tr>
+}
+
+</table>

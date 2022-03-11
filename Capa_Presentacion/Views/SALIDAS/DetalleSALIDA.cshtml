@@ -1,0 +1,60 @@
+﻿@model Capa_Entidad.Salidas
+
+@{
+    ViewBag.Title = "DetalleSALIDA";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Salidas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_SAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_SAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_EMP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_EMP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoSalida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoSalida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaSalida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaSalida)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a class="btn btn-success btn-lg" title="Editar" href="@Url.Action("Edit", new { id = Model.ID_SAL })"><i class="glyphicon glyphicon-pencil"></i></a> |
+    <a class="btn btn-primary btn-lg" title="Ir a la lista" href="@Url.Action("Details")"><i class="glyphicon glyphicon-eye-open"></i></a> |
+    <a class="btn btn-danger btn-lg" title="Eliminar" href="@Url.Action("Delete", new { id = Model.ID_SAL})"><i class="glyphicon glyphicon-erase"></i></a>
+</p>

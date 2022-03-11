@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "SalidaEmpleadosMes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SalidaEmpleadosMes</h2>
+<form action="/SERVICIOS/SalidaEmpleadosMesResultados" method="post">
+    <input type="text" name="Mes" placeholder="MES" />
+    <br /><br />
+    <input type="submit" value="BUSCAR" class="btn btn-primary" />
+</form>

@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "PermisosEmpBusca";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PermisosEmpBusca</h2>
+<form action="/SERVICIOS/PermisosEmpBuscaresultado" method="post">
+    <input type="text" name="Mes" placeholder="ID DEL EMPLEADO" />
+    <br /><br />
+    <input type="submit" value="BUSCAR" class="btn btn-primary" />
+</form>

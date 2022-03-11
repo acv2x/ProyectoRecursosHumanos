@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoASPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cargos">
+    <Key>
+      <PropertyRef Name="ID_CAR" />
+    </Key>
+    <Property Name="ID_CAR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cargo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Departamentos">
+    <Key>
+      <PropertyRef Name="ID_DEP" />
+    </Key>
+    <Property Name="ID_DEP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Departamento" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Empleados">
+    <Key>
+      <PropertyRef Name="ID_EMP" />
+    </Key>
+    <Property Name="ID_EMP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodigoEmpleado" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_DEP" Type="int" />
+    <Property Name="ID_CAR" Type="int" />
+    <Property Name="FechaIngreso" Type="nvarchar" MaxLength="50" />
+    <Property Name="Salario" Type="nvarchar" MaxLength="50" />
+    <Property Name="Estatus" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Licencias">
+    <Key>
+      <PropertyRef Name="ID_LIC" />
+    </Key>
+    <Property Name="ID_LIC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_EMP" Type="int" />
+    <Property Name="Desde" Type="nvarchar" MaxLength="50" />
+    <Property Name="Hasta" Type="nvarchar" MaxLength="50" />
+    <Property Name="Motivo" Type="nvarchar" MaxLength="500" />
+    <Property Name="Comentario" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Nominas">
+    <Key>
+      <PropertyRef Name="ID_NOM" />
+    </Key>
+    <Property Name="ID_NOM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Año" Type="int" />
+    <Property Name="Mes" Type="nvarchar" MaxLength="15" />
+    <Property Name="MontoTotal" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Permisos">
+    <Key>
+      <PropertyRef Name="ID_PER" />
+    </Key>
+    <Property Name="ID_PER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_EMP" Type="int" />
+    <Property Name="Desde" Type="nvarchar" MaxLength="50" />
+    <Property Name="Hasta" Type="nvarchar" MaxLength="50" />
+    <Property Name="Comentario" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Salidas">
+    <Key>
+      <PropertyRef Name="ID_SAL" />
+    </Key>
+    <Property Name="ID_SAL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_EMP" Type="int" />
+    <Property Name="TipoSalida" Type="nvarchar" MaxLength="50" />
+    <Property Name="Motivo" Type="nvarchar" MaxLength="500" />
+    <Property Name="FechaSalida" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Vacaciones">
+    <Key>
+      <PropertyRef Name="ID_VAC" />
+    </Key>
+    <Property Name="ID_VAC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_EMP" Type="int" />
+    <Property Name="Desde" Type="nvarchar" MaxLength="50" />
+    <Property Name="Hasta" Type="nvarchar" MaxLength="50" />
+    <Property Name="CorrespondienteA" Type="int" />
+    <Property Name="Comentario" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <Function Name="BuscaNomina" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="año" Type="nvarchar" Mode="In" />
+    <Parameter Name="mes" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Empleados_Activos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+    <Parameter Name="Departamento" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Empleados_Inactivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="PROC_Cargos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="PROC_Departamento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="PROC_EMPLEADOporMES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Mes" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_Permisos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDEMP" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Proc_PermisosEMP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDEMP" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Proc_SalidasMES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Mes" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ProyectoASPModelStoreContainer">
+    <EntitySet Name="Cargos" EntityType="Self.Cargos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Licencias" EntityType="Self.Licencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nominas" EntityType="Self.Nominas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Salidas" EntityType="Self.Salidas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vacaciones" EntityType="Self.Vacaciones" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
